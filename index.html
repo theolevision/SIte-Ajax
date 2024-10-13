@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="prism.css" />
+    <script src="script.js"></script>
+    <script src="prism.js"></script>
+    <title>Ajax</title>
+  </head>
+  <body>
+    <header>
+      <section>
+        <div></div>
+      </section>
+    </header>
+
+    <main>
+      <!--Apresentação Theo-->
+      <section>
+        <div class="apresentacao">
+          <p></p>
+          <img />
+        </div>
+      </section>
+      <!--Parte 1-->
+      <!--Assync-->
+      <section>
+        
+          <h1>Assincronismo</h1>
+          <p>
+            É um conceito em programação onde uma operação é iniciada, mas o
+            programa não espera que ela termine para continuar executando outras
+            tarefas. Isso permite que o código prossiga sem bloquear, ideal para
+            situações como requisições a servidores, leitura de arquivos ou
+            qualquer tarefa demorada. Em vez de "pausar" enquanto espera, o
+            programa continua rodando, e quando a operação assíncrona termina, o
+            resultado é tratado. Em JavaScript, isso é frequentemente
+            implementado usando Promises, AJAX, Fetch API e a sintaxe de
+            Async/Await, facilitando o manuseio de operações assíncronas de
+            forma eficiente e sem travar a execução geral do programa.
+          </p>
+        
+      </section>
+      <!--Opções-->
+      <section>
+        <div class="options">
+          <div class="option" onclick="showContent('conteudo1')">AJAX</div>
+          <div class="option" onclick="showContent('conteudo2')">Promises</div>
+          <div class="option" onclick="showContent('conteudo3')">Fetch API</div>
+          <div class="option" onclick="showContent('conteudo4')">
+            Async / Await
+          </div>
+          <div class="option" onclick="showContent('conteudo5')">
+            Vantagens/Desvantagens
+          </div>
+        </div>
+      </section>
+      <section id="conteudos-section">
+        <div id="conteudo1" class="content-section">
+          <h1>AJAX</h1>
+          <p>
+            É uma técnica para realizar requisições assíncronas a um servidor,
+            permitindo que páginas da web sejam atualizadas sem recarregar.
+            Embora o nome mencione XML, AJAX também suporta outros formatos,
+            como JSON.
+          </p>
+          <pre>
+            <code class="language-javascript">
+              var xhr = new XMLHttpRequest();
+              xhr.open('GET', 'https://api.example.com/data', true);
+              xhr.onload = function() {
+                  if (xhr.status === 200) {
+                      console.log(JSON.parse(xhr.responseText));
+                  }
+              };
+              xhr.send();
+            </code>
+          </pre>
+        </div>
+
+        <!--Promises-->
+        <div id="conteudo2" class="content-section">
+          <h1>Promises</h1>
+          <p>
+            Promises são objetos que representam o eventual resultado de uma
+            operação assíncrona. Elas podem estar em um dos três estados:
+            pendente, resolvida ou rejeitada.
+          </p>
+          <pre>
+            <code class="language-javascript">
+              let promise = new Promise((resolve, reject) => {
+                  let success = true;
+                  if (success) {
+                      resolve("Operação bem-sucedida!");
+                  } else {
+                      reject("Ocorreu um erro.");
+                  }
+              });
+        
+              promise.then(result => console.log(result))
+                     .catch(error => console.log(error));
+            </code>
+          </pre>
+        </div>
+
+        <!--Fetch-->
+        <div id="conteudo3" class="content-section">
+          <h1>Fetch API</h1>
+          <p>
+            Fetch API é uma interface moderna que permite realizar requisições
+            HTTP de maneira mais simples e limpa, retornando uma promise.
+          </p>
+          <pre>
+            <code class="language-javascript">
+              fetch('https://api.example.com/data')
+                  .then(response => response.json())
+                  .then(data => console.log(data))
+                  .catch(error => console.log('Erro:', error));
+            </code>
+          </pre>
+        </div>
+
+        <!--Async-->
+        <div id="conteudo4" class="content-section">
+          <h1>Async / Await</h1>
+          <p>
+            Async / Await são sintaxes que facilitam o trabalho com Promises,
+            tornando o código mais legível e parecido com o estilo síncrono.
+          </p>
+          <pre>
+            <code class="language-javascript">
+              async function fetchData() {
+                  try {
+                      let response = await fetch('https://api.example.com/data');
+                      let data = await response.json();
+                      console.log(data);
+                  } catch (error) {
+                      console.log('Erro:', error);
+                  }
+              }
+        
+              fetchData();
+            </code>
+          </pre>
+        </div>
+
+        <!--Vantagens/desvantagens-->
+        <div id="conteudo5" class="content-section">
+          <h2>Vantagens</h2>
+          <ul>
+            <li>
+              Permite uma experiência de usuário mais fluida, sem recarregar
+              páginas.
+            </li>
+            <li>
+              Oferece suporte a várias tecnologias modernas, como JSON e Fetch
+              API.
+            </li>
+            <li>
+              Com Async/Await, o código se torna mais legível e fácil de manter.
+            </li>
+          </ul>
+          <h2>Desvantagens</h2>
+          <ul>
+            <li>
+              Podem surgir dificuldades de compatibilidade com navegadores mais
+              antigos.
+            </li>
+            <li>
+              Erros de rede ou servidor são mais difíceis de detectar e tratar
+              sem boas práticas.
+            </li>
+            <li>
+              Requisições assíncronas podem ser complexas quando mal
+              implementadas.
+            </li>
+          </ul>
+          <pre>
+            <code class="language-javascript">
+              // Exemplo de erro na Fetch API sem tratamento adequado
+              fetch('https://api.example.com/data')
+                  .then(response => response.json())
+                  .then(data => console.log(data));
+              // Caso haja um erro, não será tratado sem um bloco .catch()
+            </code>
+          </pre>
+        </div>
+      </section>
+    </main>
+
+    <footer></footer>
+  </body>
+</html>

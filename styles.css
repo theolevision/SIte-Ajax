@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+section {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.options {
+  display: flex;
+  width: 100%;
+}
+
+.option {
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.option:hover {
+  background-color: #d5d5d5;
+}
+
+#conteudos-section {
+  background-image: url("giphy.webp");
+}
+
+.content-section {
+  width: 65vw;
+  max-width: 800px;
+  border: solid;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.content-section h1,
+.content-section h2,
+.content-section p,
+.content-section pre {
+  padding-bottom: 20px; /* Ajuste de espaçamento entre os elementos */
+}
+
+.content-section ul {
+  list-style-position: inside; /* Mantém os marcadores dentro da área de texto */
+  padding-left: 40px; /* Define um padding consistente para manter o espaçamento adequado */
+  margin: 0; /* Remove qualquer margem padrão que esteja causando desalinhamento */
+  text-align: left; /* Alinha o texto da lista à esquerda */
+}
+
+.content-section li {
+  padding-bottom: 10px; /* Espaçamento entre os itens da lista */
+}
